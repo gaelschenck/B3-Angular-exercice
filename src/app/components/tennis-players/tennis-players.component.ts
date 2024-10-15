@@ -18,6 +18,6 @@ export class TennisPlayersComponent {
     id: 1,
     name: "Sampras",
     firstName: "Pete",
-    birthDate:new Date(1971, 8, 1)
+    birthDate:new Date(1971, 7, 12)
 };
 }
