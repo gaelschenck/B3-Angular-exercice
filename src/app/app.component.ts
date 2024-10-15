@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TennisPlayersComponent } from './components/tennis-players/tennis-players.component';
+import { TennisPlayers } from './Model/tennis-players';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,6 @@ import { TennisPlayersComponent } from './components/tennis-players/tennis-playe
 })
 export class AppComponent {
   public title = 'AppTennisPlayer';
+
 
 }

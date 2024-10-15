@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TennisPlayers } from '../../Model/tennis-players';
+
 
 @Component({
   selector: 'app-tennis-players',
@@ -10,4 +12,10 @@ import { Component } from '@angular/core';
 export class TennisPlayersComponent {
 
   public playerName = "Federrer";
+
+  public player: TennisPlayers = {
+    id: 1,
+    name: "Sampras",
+    firstName: "Pete"
+};
 }
