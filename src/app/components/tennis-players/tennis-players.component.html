@@ -1,4 +1,4 @@
-<!-- <p>tennis-players works!</p> -->
+<!-- Utilisation de la classe Player -->
 <h2>Nom : {{ playerName }}</h2>
 
 <div><span>Id :</span>{{player.id}}</div>
@@ -9,6 +9,21 @@
 <div><span>Date de naissance :</span>{{player.birthDate | mydateFormat }}</div>
 <br>
 <br>
+<!-- Utilisation des Forms -->
 <label>Nom :
     <input placeholder="name" value="{{player.name}}">
 </label>
+<br>
+<label>Nom2 :
+    <input [(ngModel)]="player.firstName" placeholder="Nom du joueur">
+</label>
+<br><br>
+
+<!-- Utilisation des Reactivforms -->
+<form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+    <label>First name : 
+        <input placeholder="first name" formControlName="firstName">
+    </label>
+    <button type="submit" [disabled]="!playerForm.valid">Submit</button>
+</form>
+<div>{{ playerForm.value | json }}</div>
