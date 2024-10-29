@@ -7,6 +7,7 @@ export class TennisPlayers {
     public firstName='';
     public birthDate=new Date;
     public address = new Address;
+    public prizeList = [''];
 
     public constructor(data?: { hasOwnProperty: (arg0: string) => any; id: number; name: string; firstName: string; birthDate: Date; address: any; } | undefined){
         if(!data) return;

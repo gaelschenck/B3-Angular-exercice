@@ -7,6 +7,7 @@
 <div><span>Date de naissance :</span>{{player.birthDate}}</div>
 <div><span>Date de naissance :</span>{{player.birthDate | date:'longDate' }}</div>
 <div><span>Date de naissance :</span>{{player.birthDate | mydateFormat }}</div>
+<div><span>Prix :</span>{{player.prizeList}}</div>
 <br>
 <br>
 <!-- Utilisation des Forms -->
@@ -69,5 +70,17 @@
             <input id="zip" formControlName="zip">
         </div>
     </div>
-    <button type="submit" [disabled]="playerbForm.valid">Soumettre</button>
+    <div formArrayName="prizeList">
+        <h3>Prix gagné</h3> <button type="button" (click)="addPrize()"> Ajouter prix</button>
+        <div *ngFor="let prize of prizeList.controls; let i=index">
+            <!-- répetition du template -->
+             <label> Prix : 
+                <input type="text" [formControlName]="i">
+                <button type="button" (click)="removePrize(prize)">Supprimer le prix</button>
+             </label>
+        </div>
+    </div>
+    <button type="submit" [disabled]="!playerbForm.valid">Soumettre</button>
 </form>
+<!-- etape page 32 -->
+

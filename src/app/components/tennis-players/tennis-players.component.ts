@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TennisPlayers } from '../../Model/tennis-players';
 import { CommonModule } from '@angular/common';
 import { MydateFormatPipe } from '../../Helpers/mydate-format.pipe';
-import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Address } from '../../Model/address';
 
@@ -25,7 +25,8 @@ export class TennisPlayersComponent {
     name: "Sampras",
     firstName: "Pete",
     birthDate:new Date(1971, 7, 12),
-    address: new Address()
+    address: new Address(),
+    prizeList:['winbledon', 'santa maria']
   };
   // Partie Form
   playerForm = new FormGroup({
@@ -48,8 +49,10 @@ export class TennisPlayersComponent {
         city: [''],
         state: [''],
         zip: [''],
-      })
-      
+      }),
+      prizeList: this.fb.array([
+        this.fb.control('')
+      ]),
     });
   }
   ngOnInit(){
@@ -61,8 +64,9 @@ export class TennisPlayersComponent {
         street:'5 rue de la paix',
         city : 'Rio',
         state : 'France',
-        zip: '22222'
-      }
+        zip: '22222',
+      },
+      prizeList:[''],
     })
     console.log(this.playerbForm.value);
   }
@@ -71,6 +75,7 @@ export class TennisPlayersComponent {
       console.log(this.playerbForm.value);
     }
   }
+
   get name() {return this.playerbForm.get('name');}
   get firstName() {return this.playerbForm.get('firstName');}
   get birthDate() {return this.playerbForm.get('birthDate');}
@@ -79,6 +84,12 @@ export class TennisPlayersComponent {
   get address() {return this.playerbForm.get('Address');}
   get state() {return this.playerbForm.get('state');}
   get zip() {return this.playerbForm.get('zip');}
+  get prizeList(){return this.playerbForm. get('prizeList') as FormArray;}
 
-
+  addPrize(){
+    this.prizeList.push(this.fb.control(''));
+  }
+  removePrize(ctrl: any){
+    this.prizeList.removeAt(this.prizeList.value.findIndex((o: any) => o === ctrl));
+  }
 }
