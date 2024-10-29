@@ -24,6 +24,50 @@
     <label>First name : 
         <input placeholder="first name" formControlName="firstName">
     </label>
+
+        <!-- Amélioration des Reactivforms -->
+<div formGroupName="address">
+    <h3>Address - </h3>
+    <label> Street : <input placeholder="street" formControlName="street"> value : </label>
+</div>
+
+
     <button type="submit" [disabled]="!playerForm.valid">Submit</button>
 </form>
 <div>{{ playerForm.value | json }}</div>
+
+<!-- Reactiv forms 2 -->
+ <h3>Version B</h3>
+<form [formGroup]="playerbForm" (ngSubmit)="onSubmitb()">
+    <div>
+        <label for="name">Nom</label>
+        <input id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="firstName">Prénom</label>
+        <input id="firstName" formControlName="firstName">
+    </div>
+    <div>
+        <label for="birthDate">Date de naissance</label>
+        <input id="birthDate" formControlName="birthDate">
+    </div>
+    <div formGroupName="Address">Adresse :
+        <div>
+            <label for="street">Rue</label>
+            <input id="street" formControlName="street">
+        </div>
+        <div>
+            <label for="city">Ville</label>
+            <input id="city" formControlName="city">
+        </div>
+        <div>
+            <label for="state">Pays</label>
+            <input id="state" formControlName="state">
+        </div>
+        <div>
+            <label for="zip">Code Postal</label>
+            <input id="zip" formControlName="zip">
+        </div>
+    </div>
+    <button type="submit" [disabled]="playerbForm.valid">Soumettre</button>
+</form>
